@@ -1,7 +1,7 @@
 package com.workshop4addressbook;
 
 /**
- * Created person class for Address book with contact inforation
+ * Created person class for Address book with contact information
  * 
  * @author Asus
  *
