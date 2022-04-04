@@ -3,7 +3,7 @@ package com.workshop4addressbook;
 import java.util.Scanner;
 
 public class AddressBookMain {
-
+	
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address book System :");
 		Scanner sc = new Scanner(System.in);
@@ -11,7 +11,11 @@ public class AddressBookMain {
 		address.addContact();
 
 		while (true) {
-			System.out.println("Enter your choice \n 1.Add new Person \n 2.Edit  \n 3.Display \n 4. close");
+			System.out.println("Enter your choice \n "
+									+ "1.Add new Person \n "
+									+ "2.Edit  \n "
+									+ "3.Display \n "
+									+ "4. close");
 			int choice = sc.nextInt();
 
 			switch (choice) {

@@ -3,6 +3,7 @@ package com.workshop4addressbook;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class AddressBookService {
 	Scanner sc = new Scanner(System.in);
@@ -14,32 +15,118 @@ public class AddressBookService {
 	 * @param person - person details
 	 */
 	public void addContact() {
-		System.out.println("Please Enter the first Name : ");
-		String firstName = sc.next();
+		try {
 
-		System.out.println("Please Enter the last Name : ");
-		String lastName = sc.next();
+			/**
+			 * Getting firstName from user and validating with regex. if user enters invalid
+			 * name then throw exception
+			 */
+			System.out.println("Please Enter the first Name : ");
+			String firstName = sc.next();
+			boolean fName = Pattern.matches("[A-Z][a-z]{2,}", firstName);
+			if (fName) {
+				System.out.println("Valid firstName");
+			} else {
+				throw new AddressBookException("Invalid... Please Enter Valid firstName");
+				// System.out.println("Invalid... Please Enter Valid firstName");
+			}
 
-		System.out.println("Please Enter the address : ");
-		String address = sc.next();
+			/**
+			 * Getting lastName from user and validating with regex. if user enters invalid
+			 * name then throw exception
+			 */
+			System.out.println("Please Enter the last Name : ");
+			String lastName = sc.next();
+			boolean lName = Pattern.matches("[A-Z][a-z]{2,}", lastName);
+			if (lName) {
+				System.out.println("Valid lastName");
+			} else {
+				throw new AddressBookException("Invalid... Please Enter Valid firstName");
+			}
 
-		System.out.println("Please Enter the city : ");
-		String city = sc.next();
+			/**
+			 * Getting Address from user and validating with regex. if user enters invalid
+			 * address then throw exception
+			 */
+			System.out.println("Please Enter the address : ");
+			String address = sc.next();
+			boolean Address = Pattern.matches("[A-Za-z0-9]{2,}", address);
+			if (Address) {
+				System.out.println("Valid address");
+			} else {
+				throw new AddressBookException("Invalid... Please Enter valid address");
+			}
 
-		System.out.println("Please Enter the state : ");
-		String state = sc.next();
+			/**
+			 * Getting City from user and validating with regex. if user enters invalid city
+			 * then throw exception
+			 */
+			System.out.println("Please Enter the city : ");
+			String city = sc.next();
+			boolean City = Pattern.matches("[A-Za-z]{2,}", city);
+			if (City) {
+				System.out.println("Valid city");
+			} else {
+				throw new AddressBookException("Invalid... Please Enter Valid city");
+			}
 
-		System.out.println("Please Enter the zip : ");
-		String zip = sc.next();
+			/**
+			 * Getting state from user and validating with regex. if user enters invalid
+			 * state then throw exception
+			 */
+			System.out.println("Please Enter the state : ");
+			String state = sc.next();
+			boolean State = Pattern.matches("[A-Za-z]{2,}", state);
+			if (State) {
+				System.out.println("Valid State");
+			} else {
+				throw new AddressBookException("Invalid... Please Enter Valid State");
+			}
 
-		System.out.println("Please Enter the phone Number : ");
-		String phoneNumber = sc.next();
+			/**
+			 * Getting ZipCode from user and validating with regex. if user enters invalid
+			 * zip code then throw exception
+			 */
+			System.out.println("Please Enter the zip : ");
+			String zip = sc.next();
+			boolean zipCode = Pattern.matches("[0-9]{6}", zip);
+			if (zipCode) {
+				System.out.println("Valid Zip");
+			} else {
+				throw new AddressBookException("Invalid... Please Enter Valid Zip code");
+			}
 
-		System.out.println("Please Enter the email : ");
-		String email = sc.next();
+			/**
+			 * Getting phone number from user and validating with regex. if user enters
+			 * invalid phone number then throw exception
+			 */
+			System.out.println("Please Enter the phone Number : ");
+			String phoneNumber = sc.next();
+			boolean phone = Pattern.matches("^[0-9]{2}\\s[0-9]{10}$", phoneNumber);
+			if (phone) {
+				System.out.println("Valid Phone number");
+			} else {
+				throw new AddressBookException("Invalid... Please Enter Valid Phone number");
+			}
 
-		Person newPerson = new Person(firstName, lastName, address, city, state, zip, phoneNumber, email);
-		contacts.add(newPerson);
+			/**
+			 * Getting Email from user and validating with regex. if user enters invalid
+			 * Email then throw exception
+			 */
+			System.out.println("Please Enter the email : ");
+			String email = sc.next();
+			boolean Email = Pattern.matches("^[a-z0-9]+([_+-.][0-9a-z]+)*@[a-z]+.[a-z]{2,3}$", email);
+			if (Email) {
+				System.out.println("Valid Email address");
+			} else {
+				throw new AddressBookException("Invalid... Please Enter Valid Email address");
+			}
+
+			Person newPerson = new Person(firstName, lastName, address, city, state, zip, phoneNumber, email);
+			contacts.add(newPerson);
+		} catch (AddressBookException ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 
 	/**
@@ -83,15 +170,16 @@ public class AddressBookService {
 	public void editPersonInfo() {
 
 		Person person = findPerson();
-		System.out.println("Enter your choice to edit person"
-				+ "1.Edit firstName"
-				+ "2.Edit LastName"
-				+ "3.Edit address"
-				+ "4.Edit city"
-				+ "5.edit state"
-				+ "6.edit zopCode"
-				+ "7.Edit phoneNumber"
-				+ "8. Edit email");
+		System.out
+				.println("Enter your choice to edit person"
+									+ "1.Edit firstName" 
+									+ "2.Edit LastName" 
+									+ "3.Edit address"
+									+ "4.Edit city" 
+									+ "5.edit state" 
+									+ "6.edit zopCode" 
+									+ "7.Edit phoneNumber" 
+									+ "8. Edit email");
 
 		int choice = sc.nextInt();
 		switch (choice) {
@@ -138,29 +226,30 @@ public class AddressBookService {
 			person.setZip(newZip);
 			System.out.println("new Zip code uodated");
 			break;
-		
+
 		case 7:
 			System.out.println("Enter new Phone Number");
 			String newPhoneNumber = sc.next();
 			person.setPhoneNumber(newPhoneNumber);
 			System.out.println("new Phone Number  uodated");
 			break;
-			
+
 		case 8:
 			System.out.println("Enter new Email");
 			String newEmail = sc.next();
 			person.setEmail(newEmail);
 			System.out.println("new Email uodated");
 			break;
-			
-			default:
-				System.out.println("Enter your choice");
-				break;
+
+		default:
+			System.out.println("Enter your choice");
+			break;
 		}
-		System.out.println("Edited person information is "+person);
+		System.out.println("Edited person information is " + person);
 	}
+
 	/**
-	 * Method to display person 
+	 * Method to display person
 	 */
 	public void displayPersonInfo() {
 		System.out.println(contacts);
