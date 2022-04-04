@@ -14,7 +14,7 @@ public class AddressBookService {
 	 * 
 	 * @param person - person details
 	 */
-	public void addContact() {
+	public List<Person> addContact() {
 		try {
 
 			/**
@@ -127,6 +127,7 @@ public class AddressBookService {
 		} catch (AddressBookException ex) {
 			System.out.println(ex.getMessage());
 		}
+		return contacts;
 	}
 
 	/**

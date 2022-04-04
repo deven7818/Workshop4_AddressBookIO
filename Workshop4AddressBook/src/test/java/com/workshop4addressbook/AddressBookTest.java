@@ -10,8 +10,18 @@ public class AddressBookTest {
 	
 	AddressBookService address = new AddressBookService();
 	
+	Person person = new Person("Devendra", "Mali", "Om nagar", "Dhule", "Maharastra", "425005", "91 9405828376", "deven@gmail.com");
+	
 	@Test
-	public void firstNameValidation() {
-		Assert.assertEquals(true, address);
+	public void contactValidation() {
+		Assert.assertEquals( person, address.addContact());
 	}
+	
+	@Test
+	public void contactNotValidation() {
+		Assert.assertNotEquals( person, address.addContact());
+	}
+	
+	
+	
 }
