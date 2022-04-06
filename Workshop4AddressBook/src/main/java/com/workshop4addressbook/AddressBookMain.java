@@ -15,7 +15,8 @@ public class AddressBookMain {
 									+ "1.Add new Person \n "
 									+ "2.Edit  \n "
 									+ "3.Display \n "
-									+ "4. close");
+									+ "4.Delete Person"
+									+ "5. close");
 			int choice = sc.nextInt();
 
 			switch (choice) {
@@ -32,6 +33,10 @@ public class AddressBookMain {
 				address.displayPersonInfo();
 
 			case 4:
+				System.out.println("The list of persons in addressbook");
+				address.deleteContat();
+
+			case 5:
 				System.out.println("Exit");
 				sc.close();
 				return;

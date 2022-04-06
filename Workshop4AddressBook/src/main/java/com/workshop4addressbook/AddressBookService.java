@@ -255,4 +255,18 @@ public class AddressBookService {
 	public void displayPersonInfo() {
 		System.out.println(contacts);
 	}
+	
+	/**
+	 * Method to delete person using person's name
+	 */
+	public void deleteContat() {
+		Person person = findPerson();
+		try {
+			if(person != null) {
+				contacts.remove(person);
+			}
+		}catch (NullPointerException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
 }
