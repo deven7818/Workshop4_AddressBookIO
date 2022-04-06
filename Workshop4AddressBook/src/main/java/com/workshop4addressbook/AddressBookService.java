@@ -172,15 +172,8 @@ public class AddressBookService {
 
 		Person person = findPerson();
 		System.out
-				.println("Enter your choice to edit person"
-									+ "1.Edit firstName" 
-									+ "2.Edit LastName" 
-									+ "3.Edit address"
-									+ "4.Edit city" 
-									+ "5.edit state" 
-									+ "6.edit zopCode" 
-									+ "7.Edit phoneNumber" 
-									+ "8. Edit email");
+				.println("Enter your choice to edit person" + "1.Edit firstName" + "2.Edit LastName" + "3.Edit address"
+						+ "4.Edit city" + "5.edit state" + "6.edit zopCode" + "7.Edit phoneNumber" + "8. Edit email");
 
 		int choice = sc.nextInt();
 		switch (choice) {
@@ -255,17 +248,33 @@ public class AddressBookService {
 	public void displayPersonInfo() {
 		System.out.println(contacts);
 	}
-	
+
 	/**
 	 * Method to delete person using person's name
 	 */
 	public void deleteContat() {
 		Person person = findPerson();
 		try {
-			if(person != null) {
+			if (person != null) {
 				contacts.remove(person);
 			}
-		}catch (NullPointerException ex) {
+		} catch (NullPointerException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+
+	/**
+	 * Method to add Multiple contacts to address book system
+	 */
+	public void addMultipleContact() {
+		try {
+			System.out.println("Enter the contact yo want to delete add : ");
+			int num = sc.nextInt();
+			for (int i = 0; i < num; i++) {
+				System.out.println("Enter the details of contact");
+				addContact();
+			}
+		} catch (AddressBookException ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
