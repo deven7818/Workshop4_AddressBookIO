@@ -2,56 +2,69 @@ package com.workshop4addressbook;
 
 import java.util.Scanner;
 
-
 /**
  * 1. Create address book system to add new person 
- * 2. Edit person in address book
- * 3. Display Contacts in Address book
- * 4. Delete person in address book
+ * 2. Edit person in address book 
+ * 3. Display Contacts in Address book 
+ * 4. Delete person in address book 
  * 5. Add Multiple person in address book
- *
+ * 6. Refactor to add multiple address Book to the system 
  */
 public class AddressBookMain {
-	
 	public static void main(String[] args) {
-		System.out.println("Welcome to Address book System :");
+		System.out.println("Welcome to Address Book Program...!!!");
 		Scanner sc = new Scanner(System.in);
-		AddressBookService address = new AddressBookService();
-		address.addMultipleContact();
-		address.addContact();
+
+		/**
+		 * creating object of UniqueMultipleAddressBook for adding Unique name address
+		 * book
+		 */
+		UniqueMultipleAddress unique = new UniqueMultipleAddress();
 
 		while (true) {
-			System.out.println("Enter your choice \n "
-									+ "1.Add new Person \n "
-									+ "2.Edit  \n "
-									+ "3.Display \n "
-									+ "4.Delete Person"
-									+ "5. close");
+			System.out.println("Enter \n    "
+					+ "1. Add the new AddressBook \n "
+					+ "2. Add new contact \n "
+					+ "3. Edit the contact \n "
+					+ "4. Delete the contact \n " 
+					+ "5. Delete the AddressBook \n "
+					+ "6. Print the AddressBook \n "
+					+ "7. Print the contacts \n " 
+					+ "8. Exit");
 			int choice = sc.nextInt();
-
 			switch (choice) {
-			case 1:
-				System.out.println("Enter the contact detais to add in the Address Book: ");
-				address.addContact();
 
+			case 1:
+				unique.addAddress();
 				break;
 			case 2:
-				System.out.println("Enter pserson details to edit");
-				address.editPersonInfo();
+				unique.addContact();
+				break;
+
 			case 3:
-				System.out.println("The list of persons in addressbook");
-				address.displayPersonInfo();
+				unique.editContact();
+				break;
 
 			case 4:
-				System.out.println("The list of persons in addressbook");
-				address.deleteContat();
+				unique.deleteContact();
+				break;
 
 			case 5:
-				System.out.println("Exit");
-				sc.close();
-				return;
+				unique.deleteAddressBook();
+				break;
+			case 6:
+				unique.printBook();
+				break;
+			case 7:
+				unique.printContacts();
+			case 8:
+				System.exit(8);
+				break;
+			default:
+				System.out.println("Wrong Input");
 			}
+			sc.close();
 		}
+		
 	}
-
 }
