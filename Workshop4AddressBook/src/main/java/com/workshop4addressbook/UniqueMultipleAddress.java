@@ -10,7 +10,6 @@ import java.util.Scanner;
  *
  */
 public class UniqueMultipleAddress {
-
 	/**
 	 * Hash map to add multiple address book
 	 */

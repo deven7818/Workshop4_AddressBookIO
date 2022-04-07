@@ -14,6 +14,24 @@ public class AddressBookService {
 	 * 
 	 * @param person - person details
 	 */
+
+	/**
+	 * Method to check person already exist or not by first Name
+	 */
+	public void duplicateContact() {
+		try {
+			System.out.println("Enter first Name");
+			String name = sc.next();
+			for (Person person : contacts) {
+				if (person.getFirstName().equals(name)) {
+					System.out.println("Given Name is already Exists");
+				}
+			}
+		} catch (AddressBookException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+
 	public List<Person> addContact() {
 		try {
 
