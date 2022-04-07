@@ -1,13 +1,19 @@
 package com.workshop4addressbook;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class AddressBookService {
 	Scanner sc = new Scanner(System.in);
 	List<Person> contacts = new ArrayList<Person>();
+	Map<String, AddressBookService> adddressBook = new HashMap<>();
+	public static HashMap<String, ArrayList<Person>> personByCity = new HashMap<String, ArrayList<Person>>();
+	public static HashMap<String, ArrayList<Person>> personByState = new HashMap<String, ArrayList<Person>>();
+	Person contact = new Person();
 
 	/**
 	 * Method to add new contact to Contact list
@@ -296,4 +302,30 @@ public class AddressBookService {
 			System.out.println(ex.getMessage());
 		}
 	}
+
+	public void viewPersonByCity(Person contact) {
+		if (personByCity.containsKey(contact.getCity())) {
+			personByCity.get(contact.getCity()).add(contact);
+		} else {
+			ArrayList<Person> cityList = new ArrayList<Person>();
+			cityList.add(contact);
+			personByCity.put(contact.getCity(), cityList);
+		}
+	}
+
+	/**
+	 * Method to check person by state
+	 * 
+	 * @param contact
+	 */
+	public void viewPersonByState(Person contact) {
+		if (personByState.containsKey(contact.getState())) {
+			personByState.get(contact.getState()).add(contact);
+		} else {
+			ArrayList<Person> stateList = new ArrayList<Person>();
+			stateList.add(contact);
+			personByState.put(contact.getState(), stateList);
+		}
+	}
+
 }

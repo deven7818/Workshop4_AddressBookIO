@@ -17,6 +17,11 @@ public class Person {
 	private String email;
 
 	/**
+	 * Default constructor
+	 */
+	public Person() {
+	}
+	/**
 	 * parameterized constructor
 	 * 
 	 * @param firstName

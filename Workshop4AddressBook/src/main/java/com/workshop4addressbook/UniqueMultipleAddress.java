@@ -155,4 +155,20 @@ public class UniqueMultipleAddress {
 		}
 	}
 
+	/**
+	 * View person by city or state
+	 * 
+	 */
+	public void viewPerson(HashMap<String, ArrayList<Person>> addressMap) {
+		List<Person> contacts;
+		for (String name : addressMap.keySet()) {
+			System.out.println("People residing in: " + name);
+			contacts = addressMap.get(name);
+			for (Person contact : contacts) {
+				System.out.println(contact);
+			}
+		}
+
+	}
+
 }
