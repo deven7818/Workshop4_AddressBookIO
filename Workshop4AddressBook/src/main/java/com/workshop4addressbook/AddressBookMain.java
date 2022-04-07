@@ -3,12 +3,10 @@ package com.workshop4addressbook;
 import java.util.Scanner;
 
 /**
- * 1. Create address book system to add new person 
- * 2. Edit person in address book 
- * 3. Display Contacts in Address book 
- * 4. Delete person in address book 
- * 5. Add Multiple person in address book
- * 6. Refactor to add multiple address Book to the system 
+ * 1. Create address book system to add new person 2. Edit person in address
+ * book 3. Display Contacts in Address book 4. Delete person in address book 5.
+ * Add Multiple person in address book 6. Refactor to add multiple address Book
+ * to the system
  */
 public class AddressBookMain {
 	public static void main(String[] args) {
@@ -23,14 +21,16 @@ public class AddressBookMain {
 
 		while (true) {
 			System.out.println("Enter \n    "
-					+ "1. Add the new AddressBook \n "
+					+ "1. Add the new AddressBook \n " 
 					+ "2. Add new contact \n "
-					+ "3. Edit the contact \n "
+					+ "3. Edit the contact \n " 
 					+ "4. Delete the contact \n " 
 					+ "5. Delete the AddressBook \n "
-					+ "6. Print the AddressBook \n "
+					+ "6. Print the AddressBook \n " 
 					+ "7. Print the contacts \n " 
-					+ "8. Exit");
+					+ "8. Search By city \n "
+					+ "9. Search By state \n " 
+					+ "0. Exit");
 			int choice = sc.nextInt();
 			switch (choice) {
 
@@ -57,7 +57,14 @@ public class AddressBookMain {
 				break;
 			case 7:
 				unique.printContacts();
+				break;
 			case 8:
+				unique.searchByCity();
+				break;
+			case 9:
+				unique.searchByState();
+				break;
+			case 0:
 				System.exit(8);
 				break;
 			default:
@@ -65,6 +72,6 @@ public class AddressBookMain {
 			}
 			sc.close();
 		}
-		
+
 	}
 }
